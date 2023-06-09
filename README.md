@@ -46,52 +46,44 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-1.Create a new project in QuartusII software.
+1.Create a new project in Quartus|| Software.
 
-2.Name the project as uc for upcounter and dc for down counter.
+2.Name the project as upc and downc for up and down counter.
 
 3.Create a new verilog hdl file in the project file.
 
-4.Name the module as dc and uc for down counter and up counter.
+4.Within that file write the program for up and down counter
 
-5.Within the module declare input and output variables.
-
-6.Create a loop using if-else with condition parameter as reset value.
-
-7.End the loop.
-
-8.End the module.
-
+5.After that run the program and give the clock pulse value as 50 in timing diagram and run the program.
 
 ### PROGRAM 
 ```python
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: sarvesh.s
-RegisterNumber: 212222230135
-up :
-module sync(clk,t);
+Developed by: KULASEKARAPANDIAN K
+RegisterNumber: 212222240052
+UPCOUNTER:
+module upc(clk,A);
 input clk;
-output reg [0:2]t;
-always@ (posedge clk)
+output reg[0:3]A;
+always@(posedge clk)
 begin
-t[2]=((t[1]&t[0])^t[2]);
-t[1]=t[0]^t[1];
-t[0]=1^t[0];
+		A[0]=((((A[1])&(A[2]))&A[3])^A[0]);
+		A[1]=(((A[2])&(A[3]))^A[1]);
+		A[2]=((A[3])^A[2]);
+		A[3]=1^A[3];
 end
 endmodule
-down:
-module sync(clk,t);
+
+DOWNCOUNTER:
+module downc(clk,A);
 input clk;
-output reg [0:2]t;
-wire bar2,bar1,bar0;
-not(bar2,t[2]);
-not(bar1,t[1]);
-not(bar0,t[0]);
-always@ (posedge clk)
+output reg[0:3]A;
+always@(posedge clk)
 begin
-t[2]=((bar1&bar0)^t[2]);
-t[1]=bar0^t[1];
-t[0]=1^t[0];
+	A[0]=((((~A[1])&(~A[2]))&A[3])^A[0]);
+	A[1]=(((~A[2])&(~A[3]))^A[1]);
+	A[2]=((~A[3])^A[2]);
+	A[3]=1^A[3];
 end
 endmodule
 ```
@@ -137,6 +129,6 @@ endmodule
 
 
 ### RESULTS 
-Thus, 4 bit up and down counters are implemented and its functionality is validated successfully.
+Thus The program for counters is successfully executed.
 
 
